@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1071930367457",
+    "firebase_url": "https://lesson5-42a1d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "lesson5-42a1d",
+    "storage_bucket": "lesson5-42a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071930367457:android:e1b77253c8518f338406a0",
+        "android_client_info": {
+          "package_name": "com.example.onedproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071930367457-cpub7k93mubp18av14mbtngp2kejk59o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdEHwBaf1RwEQ8Ogbs3DnVmMgHnSOPHxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071930367457-cpub7k93mubp18av14mbtngp2kejk59o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
