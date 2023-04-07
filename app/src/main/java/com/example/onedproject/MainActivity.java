@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button add;
 
     private ListView listView;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         edit = findViewById(R.id.edit);
         add = findViewById(R.id.add);
         listView = findViewById(R.id.listView);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //add one object
-        //FirebaseDatabase.getInstance().getReference().child("Name").setValue("jy");
+        //mDatabase.child("Name").setValue("jy");
 
         //add a HashMap to firebase
         /**HashMap<String, Object> datalist = new HashMap<>();
@@ -59,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference()
          .child("user").updateChildren(datalist);**/
 
-        Information first_food = new Information("Apple","1kg");
+        /**Information first_food = new Information("Apple","1kg");
         Information second_food = new Information("Banana","2kg");
         Information third_food = new Information("Orange","3kg");
         //HashMap<Object, Object> list = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference().child("Information").child("one").setValue(first_food);
-        FirebaseDatabase.getInstance().getReference().child("Information").child("two").setValue(second_food);
-        FirebaseDatabase.getInstance().getReference().child("Information").child("three").setValue(third_food);
+        mDatabase.child("Information").child("one").setValue(first_food);
+        mDatabase.child("Information").child("two").setValue(second_food);
+        mDatabase.child("Information").child("three").setValue(third_food);**/
 
         //use EditText to add data to firebase
          add.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 if (txt_name.isEmpty()){
                     Toast.makeText(MainActivity.this,"No name entered",Toast.LENGTH_LONG).show();
                 } else {
-                    FirebaseDatabase.getInstance().getReference().child("User").child("Name").setValue(txt_name);
+                    mDatabase.child("User").child("Name").setValue(txt_name);
                 }
             }
         });
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
         listView.setAdapter(adapter);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Information");
+        DatabaseReference reference = mDatabase.child("Information");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -103,5 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        trend_class trend = new trend_class("Running","20","min",1);
+        mDatabase.child("Trend").setValue(trend);
     }
 }
